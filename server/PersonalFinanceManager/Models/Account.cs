@@ -5,18 +5,16 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace backend.Models
+namespace PersonalFinanceManager.Models
 {
     public class Account
     {
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
-        [Required]
-        public string UserID { get; set; }
-        public int ImportTypeID { get; set; }
+        public string UserId { get; set; }
+        public int ImportTypeId { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
 
         public virtual ImportType ImportType { get; set; }
-        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

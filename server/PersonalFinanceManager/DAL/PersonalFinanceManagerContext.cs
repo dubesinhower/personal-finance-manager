@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using backend.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PersonalFinanceManager.Models;
 
-namespace backend.Models
+namespace PersonalFinanceManager.DAL
 {
     public class PersonalFinanceManagerContext : IdentityDbContext<ApplicationUser>
     {
         public PersonalFinanceManagerContext() : base("DefaultConnection")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public static PersonalFinanceManagerContext Create()

@@ -4,14 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace backend.Models
+namespace PersonalFinanceManager.Models
 {
     public class Transaction
     {
         public long Id { get; set; }
-        [Required]
         public string Description { get; set; }
-        [Required]
         public DateTime Date { get; set; }
         public decimal Amount { get; set; }
         public string Comment { get; set; }
