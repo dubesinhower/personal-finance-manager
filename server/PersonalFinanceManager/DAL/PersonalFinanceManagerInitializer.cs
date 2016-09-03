@@ -22,10 +22,10 @@ namespace PersonalFinanceManager.DAL
 
             var importRules = new List<ImportRule>
             {
-            new ImportRule{ColumnName = "Date", TransactionPropertyName = "Date", MayContainCommas = false},
-            new ImportRule{ColumnName = "Description", TransactionPropertyName = "Description", MayContainCommas = false},
-            new ImportRule{ColumnName = "Comment", TransactionPropertyName = "Comment", MayContainCommas = false},
-            new ImportRule{ColumnName = "Ammount", TransactionPropertyName = "Amount", MayContainCommas = false}
+                new ImportRule{ColumnName = "Date", TransactionPropertyName = "Date", MayContainCommas = false},
+                new ImportRule{ColumnName = "Description", TransactionPropertyName = "Description", MayContainCommas = false},
+                new ImportRule{ColumnName = "Comment", TransactionPropertyName = "Comment", MayContainCommas = false},
+                new ImportRule{ColumnName = "Ammount", TransactionPropertyName = "Amount", MayContainCommas = false}
             };
             var importType = new ImportType{Name = "American Eagle", ImportRules = importRules};
             context.ImportTypes.Add(importType);
