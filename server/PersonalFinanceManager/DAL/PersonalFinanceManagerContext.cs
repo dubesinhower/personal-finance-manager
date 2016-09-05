@@ -9,7 +9,7 @@ using PersonalFinanceManager.Models;
 
 namespace PersonalFinanceManager.DAL
 {
-    public class PersonalFinanceManagerContext : IdentityDbContext<ApplicationUser>
+    public partial class PersonalFinanceManagerContext : IdentityDbContext<ApplicationUser>
     {
         public PersonalFinanceManagerContext() : base("DefaultConnection")
         {

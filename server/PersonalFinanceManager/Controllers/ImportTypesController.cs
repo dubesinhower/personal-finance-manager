@@ -20,7 +20,7 @@ namespace PersonalFinanceManager.Controllers
         // GET: api/ImportTypes
         public IQueryable<ImportType> GetImportTypes()
         {
-            return db.ImportTypes.Include(i => i.ImportRules);
+            return db.ImportTypes;
         }
 
         // GET: api/ImportTypes/5

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace PersonalFinanceManager.Models
 {
-    public class Transaction
+    public partial class Transaction
     {
         public long Id { get; set; }
         public string Description { get; set; }

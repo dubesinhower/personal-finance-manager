@@ -31,5 +31,10 @@ namespace PersonalFinanceManager.DAL
             context.ImportTypes.Add(importType);
             context.SaveChanges();
         }
+
+        public void ImportTransactions(PersonalFinanceManagerContext context)
+        {
+            
+        }
     }
 }
