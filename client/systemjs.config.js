@@ -11,7 +11,9 @@
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs',
-    'ng2-file-upload':            'node_modules/ng2-file-upload'
+    'ng2-file-upload':            'node_modules/ng2-file-upload',
+    'accounts':                   'app/accounts',
+    'accounts/shared':            'app/accounts/shared'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -19,7 +21,9 @@
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
-    'ng2-file-upload':            { defaultExtension:'js' }
+    'ng2-file-upload':            { defaultExtension:'js' },
+    'accounts':                   { main: 'index.js', defaultExtension: 'js' },
+    'accounts/shared':            { main: 'index.js', defaultExtension: 'js' }
   };
 
   var ngPackageNames = [
