@@ -13,6 +13,6 @@ export class AccountsComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+        this._accountService.getAccounts.
     }
 }
