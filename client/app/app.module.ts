@@ -4,8 +4,7 @@ import { FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { HttpModule }    from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import { AccountsComponent } from './accounts';
-import { AccountService } from './accounts/shared';
+import { AccountsComponent, AccountService, TransactionTableComponent } from './accounts';
 
 @NgModule({
   imports: [ 
@@ -14,6 +13,7 @@ import { AccountService } from './accounts/shared';
   declarations: [ 
     AppComponent, 
     AccountsComponent, 
+    TransactionTableComponent,
     FileSelectDirective ],
   providers: [
       AccountService
