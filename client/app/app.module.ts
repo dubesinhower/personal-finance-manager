@@ -4,20 +4,25 @@ import { FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { HttpModule }    from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import { AccountsComponent } from './accounts';
-import { AccountService } from './accounts/shared';
+import { AppRoutingModule } from './app-routing.module';
+
+import { AccountsComponent, AccountService } from './accounts';
+import { AuthorizeComponent } from './authorize';
+import { OAuthService } from './shared';
 
 @NgModule({
   imports: [ 
-    BrowserModule, 
-    HttpModule ],
+      BrowserModule, 
+      HttpModule,
+      AppRoutingModule ],
   declarations: [ 
-    AppComponent, 
-    AccountsComponent, 
-    FileSelectDirective ],
+      AppComponent, 
+      AccountsComponent,
+      AuthorizeComponent,
+      FileSelectDirective ],
   providers: [
-      AccountService
-    ],
+      AccountService,
+      OAuthService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

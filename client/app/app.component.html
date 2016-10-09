@@ -1,2 +1,3 @@
 <h1>Personal Finance Manager</h1>
-<pfm-accounts></pfm-accounts>
+<a *ngIf="!authorized" href="{{authorizationUrl}}" class="btn btn-primary">Authorize</a>
+<router-outlet></router-outlet>

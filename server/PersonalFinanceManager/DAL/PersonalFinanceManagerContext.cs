@@ -13,7 +13,7 @@ namespace PersonalFinanceManager.DAL
     {
         public PersonalFinanceManagerContext() : base("DefaultConnection")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public static PersonalFinanceManagerContext Create()

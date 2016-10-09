@@ -221,6 +221,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ImportTypesController.cs" />
+    <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="DAL\PersonalFinanceManagerContextExtensions.cs" />
     <Compile Include="DAL\PersonalFinanceManagerInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -316,6 +317,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Services\" />
+    <Folder Include="Views\OAuth\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
