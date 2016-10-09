@@ -54,6 +54,10 @@
         main: 'index.js', 
         defaultExtension: 'js' 
       },
+      'accounts/transaction-table': { 
+        main: 'index.js', 
+        defaultExtension: 'js' 
+      },
       'authorize': { 
         main: 'index.js', 
         defaultExtension: 'js' 

@@ -6,20 +6,21 @@ import { HttpModule }    from '@angular/http';
 import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AccountsComponent, AccountService } from './accounts';
 import { AuthorizeComponent } from './authorize';
 import { OAuthService } from './shared';
+import { AccountsComponent, AccountService, TransactionTableComponent } from './accounts';
 
 @NgModule({
   imports: [ 
       BrowserModule, 
       HttpModule,
       AppRoutingModule ],
-  declarations: [ 
+  declarations: [
       AppComponent, 
       AccountsComponent,
       AuthorizeComponent,
-      FileSelectDirective ],
+      FileSelectDirective,
+      TransactionTableComponent ],
   providers: [
       AccountService,
       OAuthService ],

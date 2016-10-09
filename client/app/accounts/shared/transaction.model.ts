@@ -1,7 +1,7 @@
 export class Transaction {
     id: number;
     description: string;
-    date: Date;
+    date: string;
     amount: number;
     comment: string;
 }
