@@ -8,7 +8,7 @@ import { OAuthService } from './shared';
     styleUrls: ['app/app.component.css']
 })
 export class AppComponent implements OnInit {
-    authorizationUrl: string = '';
+    authorizationUrl: string;
     authorized: boolean = false;
 
     constructor(private oAuthService: OAuthService) {  }

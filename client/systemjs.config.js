@@ -69,6 +69,10 @@
       'shared/services': { 
         main: 'index.js', 
         defaultExtension: 'js' 
+      },
+      'shared/models': { 
+        main: 'index.js', 
+        defaultExtension: 'js' 
       }
     }
   });

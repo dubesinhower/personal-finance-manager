@@ -27,7 +27,7 @@ namespace PersonalFinanceManager.Controllers
         [ResponseType(typeof(ImportType))]
         public IHttpActionResult GetImportType(int id)
         {
-            ImportType importType = db.ImportTypes.Find(id);
+            var importType = db.ImportTypes.Find(id);
             if (importType == null)
             {
                 return NotFound();
@@ -62,10 +62,7 @@ namespace PersonalFinanceManager.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -90,7 +87,7 @@ namespace PersonalFinanceManager.Controllers
         [ResponseType(typeof(ImportType))]
         public IHttpActionResult DeleteImportType(int id)
         {
-            ImportType importType = db.ImportTypes.Find(id);
+            var importType = db.ImportTypes.Find(id);
             if (importType == null)
             {
                 return NotFound();

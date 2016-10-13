@@ -19,7 +19,7 @@ export class AccountService {
     }
 
     getAccount(id: number): Promise<Account> {
-    return this._http.get(this.accountsUrl + "/" + id)
+    return this._http.get(`${this.accountsUrl}/${id}`)
                .toPromise()
                .then(response => response.json()  as Account)
                .catch(this.handleError);

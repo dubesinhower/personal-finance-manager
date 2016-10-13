@@ -7,13 +7,16 @@ import { OAuthService } from '../shared';
     templateUrl: 'app/authorize/authorize.component.html'
 })
 export class AuthorizeComponent implements OnInit{
-    authorizationMessage: string;
+    authorizationMessages: string[];
 
     constructor(private oAuthService: OAuthService) { }
 
     ngOnInit() {
-        let queryString = location.hash.substring(1);
-        this.authorizationMessage = 'Authorizing your Gmail account...';
-        this.oAuthService.requestAccessToken(queryString);
-    }    
+        this.oAuthService.sendAuthCodeToServer(this.getParameterByName('code'));
+    }
+
+    getParameterByName(name: string) {
+        let match = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    }
 }
