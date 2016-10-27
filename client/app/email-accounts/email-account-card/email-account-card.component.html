@@ -1,0 +1,12 @@
+<div class="card col-xs-3">
+    <div class="card-block">
+        <h4 class="card-title">{{emailAccount.name}}</h4>
+        <p class="card-text"></p>
+        <button *ngIf="emailAccount.emailTypeId == 1 && !emailAccount.gmailOAuthAccessTokensId" 
+            (click)="authorizeGmail.emit(emailAccount.id)"
+            type="button"
+            class="btn btn-primary">
+                Authorize Gmail
+        </button>
+    </div>
+</div>

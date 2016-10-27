@@ -12,7 +12,16 @@ export class AuthorizeComponent implements OnInit{
     constructor(private oAuthService: OAuthService) { }
 
     ngOnInit() {
-        this.oAuthService.sendAuthCodeToServer(this.getParameterByName('code'));
+        this.oAuthService
+            .postAuthorizationCode(this.getParameterByName('code'))
+            .subscribe(res => {
+                if(res.status == 400) {
+                    console.log("error")
+                }
+                else if(res.status == 200) {
+                    console.log("success");
+                }
+        });
     }
 
     getParameterByName(name: string) {

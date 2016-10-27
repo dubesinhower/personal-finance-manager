@@ -23,57 +23,44 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // other libraries
       'rxjs':                       'npm:rxjs',
+      '@ngrx/core':                 'npm:@ngrx/core/bundles/core.umd.js',
+      '@ngrx/store':                'npm:@ngrx/store/bundles/store.umd.js',
       'angular-in-memory-web-api':  'npm:angular-in-memory-web-api',      
       'ng2-file-upload':            'node_modules/ng2-file-upload',
-      // application barrels
+      // application barrels      
+      'shared':                     'app/shared',
+      'core':                       'app/core',
+      'user-accounts':              'app/user-accounts',
+      'email-accounts':             'app/email-accounts',
+      'home':                       'app/home',
       'accounts':                   'app/accounts',
-      'authorize':                  'app/authorize',
-      'shared':                     'app/shared'
+      'authorize':                  'app/authorize'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
-      app: {
-        main: './main.js',
-        defaultExtension: 'js'
-      },
-      rxjs: {
-        defaultExtension: 'js'
-      },
-      'angular-in-memory-web-api': {
-        main: './index.js',
-        defaultExtension: 'js'
-      },
-      'ng2-file-upload': {
-        defaultExtension:'js' 
-      },
-      'accounts': { 
-        main: 'index.js', 
-        defaultExtension: 'js' 
-      },
-      'accounts/shared': { 
-        main: 'index.js', 
-        defaultExtension: 'js' 
-      },
-      'accounts/transaction-table': { 
-        main: 'index.js', 
-        defaultExtension: 'js' 
-      },
-      'authorize': { 
-        main: 'index.js', 
-        defaultExtension: 'js' 
-      },
-      'shared': { 
-        main: 'index.js', 
-        defaultExtension: 'js' 
-      },
-      'shared/services': { 
-        main: 'index.js', 
-        defaultExtension: 'js' 
-      },
-      'shared/models': { 
-        main: 'index.js', 
-        defaultExtension: 'js' 
-      }
+      app:                                              { main: './main.js', defaultExtension: 'js' },
+      rxjs:                                             { defaultExtension: 'js' },
+      'angular-in-memory-web-api':                      { main: './index.js', defaultExtension: 'js' },
+      'ng2-file-upload':                                { defaultExtension:'js' },      
+      'shared':                                         { main: 'index.js', defaultExtension: 'js' },
+      'shared/services':                                { main: 'index.js', defaultExtension: 'js' },
+      'shared/reducers':                                { main: 'index.js', defaultExtension: 'js' },
+      'shared/models':                                  { main: 'index.js', defaultExtension: 'js' },
+      'core':                                           { main: 'index.js', defaultExtension: 'js' },
+      'user-accounts':                                  { main: 'index.js', defaultExtension: 'js' },
+      'user-accounts/shared':                           { main: 'index.js', defaultExtension: 'js' },
+      'user-accounts/user-account-registration-form':   { main: 'index.js', defaultExtension: 'js' },
+      'email-accounts':                                 { main: 'index.js', defaultExtension: 'js' },
+      'email-accounts/imap-settings-form':              { main: 'index.js', defaultExtension: 'js' },
+      'email-accounts/shared':                          { main: 'index.js', defaultExtension: 'js' },
+      'email-accounts/email-account-card':              { main: 'index.js', defaultExtension: 'js' },
+      'email-accounts/email-account-list':              { main: 'index.js', defaultExtension: 'js' },
+      'core/nav':                                       { main: 'index.js', defaultExtension: 'js' },
+      'home':                                           { main: 'index.js', defaultExtension: 'js' },
+      'accounts':                                       { main: 'index.js', defaultExtension: 'js' },
+      'accounts/shared':                                { main: 'index.js', defaultExtension: 'js' },
+      'accounts/transaction-table':                     { main: 'index.js', defaultExtension: 'js' },
+      'authorize':                                      { main: 'index.js', defaultExtension: 'js' }
     }
   });
 })(this);

@@ -1,3 +1,4 @@
-<h1>Personal Finance Manager</h1>
-<a *ngIf="!authorized" href="{{authorizationUrl}}" class="btn btn-primary">Authorize</a>
-<router-outlet></router-outlet>
+<pfm-nav></pfm-nav>
+<div class="container-fluid" style="margin-top: 1em;">
+    <router-outlet></router-outlet>
+</div>

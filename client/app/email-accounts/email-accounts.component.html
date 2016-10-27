@@ -1,0 +1,6 @@
+<h5>User Email Accounts</h5>
+<div *ngIf='!(_emailAccounts$ | async)'>Loading email accounts...</div> 
+<pfm-email-account-list *ngIf='(_emailAccounts$ | async)?.length' 
+    [emailAccounts]='(_emailAccounts$ | async)' 
+    class="col-md-6"></pfm-email-account-list>
+<div *ngIf='(_emailAccounts$ | async)?.length == 0'>No email accounts found</div>

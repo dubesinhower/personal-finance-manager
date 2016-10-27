@@ -12,14 +12,14 @@ export class AccountService {
     constructor(private _http: Http) { }
 
     getAccounts(): Promise<Account[]> {
-    return this._http.get(this.accountsUrl)
+        return this._http.get(this.accountsUrl)
                .toPromise()
                .then(response => response.json() as Account[])
                .catch(this.handleError);
     }
 
     getAccount(id: number): Promise<Account> {
-    return this._http.get(`${this.accountsUrl}/${id}`)
+        return this._http.get(`${this.accountsUrl}/${id}`)
                .toPromise()
                .then(response => response.json()  as Account)
                .catch(this.handleError);

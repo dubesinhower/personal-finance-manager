@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import { OAuthService } from './shared';
+import { Observable } from 'rxjs/Rx';
+
+import { AppStore } from './shared';
+import { UserAccountService, Token } from './user-accounts';
+import { GmailOAuthService } from './email-accounts';
 
 @Component({
     selector: 'pfm-app',
@@ -8,14 +13,14 @@ import { OAuthService } from './shared';
     styleUrls: ['app/app.component.css']
 })
 export class AppComponent implements OnInit {
-    authorizationUrl: string;
-    authorized: boolean = false;
+    userToken$: Observable<Token>;
 
-    constructor(private oAuthService: OAuthService) {  }
+    constructor(
+        private _userAccountService: UserAccountService,
+        private _gmailOAuthService: GmailOAuthService,
+        private _store: Store<AppStore>) {  }
 
     ngOnInit() {
-        this.oAuthService
-            .authorizationUrl
-            .subscribe(url => this.authorizationUrl = url);
+        this._userAccountService.loadExistingToken();
     }
 }
