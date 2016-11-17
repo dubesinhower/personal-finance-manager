@@ -1,6 +1,6 @@
 import { ActionReducer, Action } from '@ngrx/store';
 
-import { Token } from '../../user-accounts';
+import { Token } from '../../user-account';
 
 export const userTokenReducer: ActionReducer<Token> = (state: Token = null, action: Action) => {
     switch (action.type) {
@@ -10,6 +10,5 @@ export const userTokenReducer: ActionReducer<Token> = (state: Token = null, acti
             return null;
         default:
             return state;
-            // Hi chris! This is a commment maybe!?   idk im not good at coding like you are, look at all this code its pretty neat eh?
     }
-}
+};

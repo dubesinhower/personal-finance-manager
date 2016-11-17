@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace EcommerceTrackerAPI.DAL
 {
 
-    public class ApplicationDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    public class ApplicationDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
@@ -28,18 +28,6 @@ namespace EcommerceTrackerAPI.DAL
                 var userManager = new UserManager<ApplicationUser>(userStore);
                 var userToInsert = new ApplicationUser { UserName = "chris" };
                 userManager.Create(userToInsert, "password");
-
-                var user = userManager.FindByName("chris");
-                // var gmailType = context.EmailTypes.First(et => et.Description == "Gmail");
-                var imapType = context.EmailTypes.First(et => et.Description == "IMAP");
-
-                context.EmailAccounts.Add(new ImapAccount
-                {
-                    UserId = user.Id,
-                    EmailTypeId = imapType.Id,
-                    Name = "IMAP",
-                    LoginCredentialsId = null
-                });
             }
 
             context.SaveChanges();

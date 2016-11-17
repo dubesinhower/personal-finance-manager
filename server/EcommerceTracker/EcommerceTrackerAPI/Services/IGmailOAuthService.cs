@@ -1,11 +1,15 @@
-﻿using EcommerceTrackerAPI.Models;
+﻿using System.Threading.Tasks;
+using EcommerceTrackerAPI.Models;
+using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Gmail.v1;
 
 namespace EcommerceTrackerAPI.Services
 {
     public interface IGmailOAuthService
     {
-        AuthorizationUrl GetAuthorizationUrl();
         string GetAntiForgeryToken();
-        GmailOAuthAccessTokens GetAccessTokensFromOAuth(string authCode);
+        TokenResponse GetTokenResponse(string code);
+        bool RefreshToken(ref TokenResponse token);
+        GmailService GetGmailService(TokenResponse credentials);
     }
 }

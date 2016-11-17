@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { AppStore } from '../../shared';
-import { Login, UserAccountService, Token } from '../../user-accounts';
+import { AppStore, Login } from '../../shared';
+import { UserAccountService, Token } from '../../user-account';
 import { Observable } from 'rxjs/Rx';
 
 @Component ({
     selector: 'pfm-nav',
     templateUrl: 'app/core/nav/nav.component.html'
 })
-export class NavComponent implements OnInit{
+export class NavComponent implements OnInit {
     private _userToken$: Observable<Token>;
-    private _loginModel = new Login();
+    private loginModel = new Login('', null);
 
     constructor(
         private _userAccountService: UserAccountService,
@@ -22,7 +22,7 @@ export class NavComponent implements OnInit{
     }
 
     onLogin() {
-        this._userAccountService.login(this._loginModel);
+        this._userAccountService.login(this.loginModel);
     }
 
     onLogout() {

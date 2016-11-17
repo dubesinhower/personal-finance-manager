@@ -1,14 +1,21 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { ImapSettings } from '../shared';
+import { Socket, ImapSettings } from '../shared';
+import { Login } from '../../shared';
 
 @Component ({
     selector: 'pfm-imap-settings-form',
     templateUrl: 'app/email-accounts/imap-settings-form/imap-settings-form.component.html'
 })
-export class ImapSettingsFormComponent {
+export class ImapSettingsFormComponent implements OnInit {
+    @Input() selectedAccount: number;
     @Input() errorMessage: string;
-    @Output() onSubmit = new EventEmitter<ImapSettings>();
+    @Output() submitSettings = new EventEmitter<ImapSettings>();
+    private imapSettings: ImapSettings;
 
-    model = new ImapSettings('', null, '', '');
+    constructor() { }
+
+    ngOnInit() {
+        this.imapSettings = new ImapSettings(this.selectedAccount, new Socket('', null), new Login('', null));
+    }
 }

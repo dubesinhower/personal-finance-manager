@@ -5,13 +5,13 @@
             <a routerLink="/emailAccounts" href="#" class="nav-link" >Email Accounts</a>
         </li>
     </ul>
-    <form (ngSubmit)="onLogin()" *ngIf="!(_userToken$ | async)" class="form-inline float-sm-right" style="margin-bottom: 0rem;">
-        <input class="form-control" id="username" type="text" required [(ngModel)]="_loginModel.username" name="username" placeholder="Username">
-        <input class="form-control" id ="password" type="password" required [(ngModel)]="_loginModel.password" name="password" placeholder="Password">
-        <button class="btn btn-outline-primary" type="submit">Login</button>
-        <button routerLink="/account/register" class="btn btn-outline-success" type="button">Register</button>
+    <form *ngIf="!(_userToken$ | async)" (ngSubmit)="onLogin()" class="form-inline float-sm-right" style="margin-bottom: 0rem;" #loginForm="ngForm">
+        <input type="text" class="form-control" id="loginUsername" required [(ngModel)]="loginModel.username" name="loginUsername" placeholder="Username">
+        <input type="password" class="form-control" id="loginPassword" required [(ngModel)]="loginModel.password" name="loginPassword" placeholder="Password">
+        <button type="submit" class="btn btn-outline-primary">Login</button>
+        <button type="button" routerLink="/userAccount/registration" class="btn btn-outline-success">Register</button>
     </form>    
-    <ul class="nav navbar-nav float-sm-right" *ngIf="_userToken$ | async">
+    <ul *ngIf="_userToken$ | async" class="nav navbar-nav float-sm-right">
         <li class="nav-item">
             <p class="navbar-text" style="margin: 0;">Welcome back, {{(_userToken$ | async).userName}}.</p>
         </li>

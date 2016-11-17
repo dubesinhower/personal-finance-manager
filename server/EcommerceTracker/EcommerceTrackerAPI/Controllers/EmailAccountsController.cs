@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using EcommerceTrackerAPI.Models;
+using EcommerceTrackerAPI.Services;
+using Hangfire;
 using Microsoft.AspNet.Identity;
 
 namespace EcommerceTrackerAPI.Controllers
@@ -16,20 +18,20 @@ namespace EcommerceTrackerAPI.Controllers
     [Authorize]
     public class EmailAccountsController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: api/EmailAccounts
         public IQueryable<EmailAccount> GetEmailAccounts()
         {
             var userId = RequestContext.Principal.Identity.GetUserId();
-            return db.EmailAccounts.Where(ea => ea.UserId == userId).Include(ea => ea.Type);
+            return _db.EmailAccounts.Where(ea => ea.UserID == userId).Include(ea => ea.EmailType);
         }
 
         // GET: api/EmailAccounts/5
         [ResponseType(typeof(EmailAccount))]
         public IHttpActionResult GetEmailAccount(int id)
         {
-            EmailAccount emailAccount = db.EmailAccounts.Find(id);
+            var emailAccount = _db.EmailAccounts.Find(id);
             if (emailAccount == null)
             {
                 return NotFound();
@@ -47,16 +49,16 @@ namespace EcommerceTrackerAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != emailAccount.Id)
+            if (id != emailAccount.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(emailAccount).State = EntityState.Modified;
+            _db.Entry(emailAccount).State = EntityState.Modified;
 
             try
             {
-                db.SaveChanges();
+                _db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -64,10 +66,7 @@ namespace EcommerceTrackerAPI.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -82,24 +81,30 @@ namespace EcommerceTrackerAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.EmailAccounts.Add(emailAccount);
-            db.SaveChanges();
+            _db.EmailAccounts.Add(emailAccount);
+            _db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = emailAccount.Id }, emailAccount);
+            return CreatedAtRoute("DefaultApi", new { id = emailAccount.ID }, emailAccount);
         }
 
         // DELETE: api/EmailAccounts/5
         [ResponseType(typeof(EmailAccount))]
         public IHttpActionResult DeleteEmailAccount(int id)
         {
-            EmailAccount emailAccount = db.EmailAccounts.Find(id);
+            var emailAccount = _db.EmailAccounts.Include(e => e.EmailType).SingleOrDefault(e => e.ID == id);
             if (emailAccount == null)
             {
                 return NotFound();
             }
+            if (emailAccount.EmailType.Description == "Gmail")
+            {
+                var gmailAccount = (GmailAccount)_db.EmailAccounts.Find(id);
+                var gmailAccessTokens = _db.GmailAccessTokens.Find(gmailAccount.GmailAccessTokensID);
+                _db.GmailAccessTokens.Remove(gmailAccessTokens);
+            }
 
-            db.EmailAccounts.Remove(emailAccount);
-            db.SaveChanges();
+            _db.EmailAccounts.Remove(emailAccount);
+            _db.SaveChanges();
 
             return Ok(emailAccount);
         }
@@ -108,14 +113,14 @@ namespace EcommerceTrackerAPI.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool EmailAccountExists(int id)
         {
-            return db.EmailAccounts.Count(e => e.Id == id) > 0;
+            return _db.EmailAccounts.Count(e => e.ID == id) > 0;
         }
     }
 }

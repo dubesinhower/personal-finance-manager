@@ -1,6 +1,13 @@
-<h5>User Email Accounts</h5>
-<div *ngIf='!(_emailAccounts$ | async)'>Loading email accounts...</div> 
-<pfm-email-account-list *ngIf='(_emailAccounts$ | async)?.length' 
-    [emailAccounts]='(_emailAccounts$ | async)' 
-    class="col-md-6"></pfm-email-account-list>
-<div *ngIf='(_emailAccounts$ | async)?.length == 0'>No email accounts found</div>
+<div *ngIf="!(emailAccounts$ | async)">Loading email accounts...</div>
+<button type="button" (click)="addGmailAccount()" class="btn btn-primary" style="margin-bottom: 1em;">Add Gmail Account</button>
+<h5 *ngIf="(emailAccounts$ | async)?.length == 0">No email accounts found</h5>
+<div *ngIf="(emailAccounts$ | async)?.length" class="row">
+    <div class="col-xs-12">
+        <h5>User Email Accounts</h5>
+        <pfm-email-account-list 
+            [emailAccounts]="(emailAccounts$ | async)"
+            [selectedAccount]="(selectedEmailAccount$ | async)"
+            (selectAccount)="selectEmailAccount($event)"
+            (deleteAccount)="deleteEmailAccount($event)"></pfm-email-account-list>    
+    </div>    
+</div>

@@ -18,7 +18,25 @@ export class EmailAccountService implements OnInit {
         this.getEmailAccounts();
     }
 
-    getEmailAccounts(): Observable<EmailAccount> {
+    loadEmailAccounts() {
+        this.getEmailAccounts()
+            .subscribe(
+                emailAccounts => {
+                    this._store.dispatch({ type: 'LOAD_EMAIL_ACCOUNTS', payload: emailAccounts });
+                },
+                error => console.log(error));
+    }
+
+    deleteAccount(id: number) {
+        let token = JSON.parse(localStorage.getItem('userAccountToken'));
+        let headers = new Headers({ 'Authorization': `Bearer ${token.access_token}` });
+        let options = new RequestOptions({ headers: headers });
+        return this._http
+            .delete(`${this._secureBaseUrl}/api/emailAccounts/${id}`, options)
+            .map(response => response.json() as EmailAccount);
+    }
+
+    private getEmailAccounts(): Observable<EmailAccount> {
         let token = JSON.parse(localStorage.getItem('userAccountToken'));
         let headers = new Headers({ 'Authorization': `Bearer ${token.access_token}` });
         let options = new RequestOptions({ headers: headers });

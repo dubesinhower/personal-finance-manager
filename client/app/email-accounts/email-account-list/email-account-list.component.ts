@@ -8,5 +8,7 @@ import { ImapAccount } from '../shared';
 })
 export class EmailAccountListComponent {
     @Input() emailAccounts: ImapAccount[];
-    // @Output() authorizeGmail = new EventEmitter<number>();
+    @Input() selectedAccount: number;
+    @Output() selectAccount = new EventEmitter<number>();
+    @Output() deleteAccount = new EventEmitter<number>();
 }
