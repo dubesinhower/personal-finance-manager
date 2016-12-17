@@ -8,8 +8,6 @@ using System.Web.Http.Cors;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Autofac;
-using Autofac.Integration.WebApi;
 using AutoMapper;
 using EcommerceTrackerAPI.Models;
 using EcommerceTrackerAPI.Services;

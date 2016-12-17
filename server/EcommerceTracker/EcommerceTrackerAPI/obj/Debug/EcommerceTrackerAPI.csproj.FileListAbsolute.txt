@@ -94,10 +94,6 @@ D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\b
 D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\System.Web.Http.Cors.xml
 D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Microsoft.Owin.Cors.dll
 D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Microsoft.Owin.Cors.xml
-D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Autofac.dll
-D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Autofac.Integration.WebApi.dll
-D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Autofac.xml
-D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Autofac.Integration.WebApi.xml
 D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\BouncyCastle.Crypto.dll
 D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\MailKit.dll
 D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\MimeKit.dll
@@ -135,5 +131,14 @@ D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\b
 D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\zh\Hangfire.Core.resources.dll
 D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\AutoMapper.dll
 D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\AutoMapper.xml
-D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Hangfire.Autofac.dll
-D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Hangfire.Autofac.xml
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Ninject.dll
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Ninject.Web.Common.dll
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Ninject.Web.WebApi.dll
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\WebActivatorEx.dll
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Ninject.xml
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Ninject.Web.Common.xml
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Ninject.Web.WebApi.xml
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Ninject.Web.WebApi.WebHost.dll
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Ninject.Web.WebApi.WebHost.xml
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Hangfire.Ninject.dll
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI\bin\Hangfire.Ninject.xml

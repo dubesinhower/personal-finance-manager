@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Google.Apis.Auth.OAuth2.Responses;
 
@@ -12,6 +13,9 @@ namespace EcommerceTrackerAPI.Models
         [Required]
         public string UserID { get; set; }
         public int EmailTypeID { get; set; }
+        [Required]
+        public DateTime Created { get; set; }
+        public DateTime? LastScanned { get; set; }
 
         public virtual EmailType EmailType { get; set; }
     }
@@ -19,9 +23,10 @@ namespace EcommerceTrackerAPI.Models
     [Table("GmailAccounts")]
     public class GmailAccount : EmailAccount
     {
+        [Required]
+        public string GmailEmailAddress { get; set; }
         public int? GmailAccessTokensID { get; set; }
-
-        public virtual  GmailAccessTokens GmailAccessTokens { get; set; }
+        public virtual GmailAccessTokens GmailAccessTokens { get; set; }
     }
 
     [Table("ImapAccounts")]

@@ -1,0 +1,22 @@
+<nav class="navbar navbar-light bg-faded">
+    <a routerLink="/" class="navbar-brand">EcommerceTracker</a>
+    <ul *ngIf="_userToken$ | async" class="nav navbar-nav">        
+        <li class="nav-item active">
+            <a routerLink="/emailAccounts" href="#" class="nav-link" >Email Accounts</a>
+        </li>
+    </ul>
+    <form *ngIf="!(_userToken$ | async)" (ngSubmit)="onLogin()" class="form-inline float-sm-right" style="margin-bottom: 0rem;" #loginForm="ngForm">
+        <input type="text" class="form-control" id="loginUsername" required [(ngModel)]="loginModel.username" name="loginUsername" placeholder="Username">
+        <input type="password" class="form-control" id="loginPassword" required [(ngModel)]="loginModel.password" name="loginPassword" placeholder="Password">
+        <button type="submit" class="btn btn-outline-primary">Login</button>
+        <button type="button" routerLink="/userAccount/registration" class="btn btn-outline-success">Register</button>
+    </form>    
+    <ul *ngIf="_userToken$ | async" class="nav navbar-nav float-sm-right">
+        <li class="nav-item">
+            <p class="navbar-text" style="margin: 0;">Welcome back, {{(_userToken$ | async).userName}}.</p>
+        </li>
+        <li class="nav-item">
+            <button class="btn btn-outline-warning" (click)="onLogout()" type="button">Log Out</button>
+        </li>
+    </ul>
+</nav>

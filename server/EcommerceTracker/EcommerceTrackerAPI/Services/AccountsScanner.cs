@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using EcommerceTrackerAPI.Models;
@@ -7,22 +8,31 @@ using Hangfire;
 
 namespace EcommerceTrackerAPI.Services
 {
-    public class AccountsScanner : IAccountsScanner
+    public class AccountsScanner
     {
         public void Run()
         {
-            List<GmailAccount> gmailAccounts;
+            List<int> gmailAccountIds;
+            //List<int> imapAccountIds;
             using (var db = new ApplicationDbContext())
             {
-                gmailAccounts = db.EmailAccounts.OfType<GmailAccount>().ToList();
+                gmailAccountIds = db.EmailAccounts.OfType<GmailAccount>().Select(a => a.ID).ToList();
+                //imapAccountIds = db.EmailAccounts.OfType<ImapAccount>().Select(a => a.ID).ToList();
             }
-            if (gmailAccounts.Count > 0)
+            if (gmailAccountIds.Count > 0)
             {
-                foreach (var gmailAccount in gmailAccounts)
+                foreach (var gmailAccountId in gmailAccountIds)
                 {
-                    BackgroundJob.Enqueue<GmailAccountScanner>(x => x.Scan(gmailAccount));
+                    BackgroundJob.Enqueue<GmailScanner>(x => x.Scan(gmailAccountId));
                 }
             }
+            /*if (imapAccountIds.Count > 0)
+            {
+                foreach (var imapAccountId in imapAccountIds)
+                {
+                    
+                }
+            }*/
         }
     }
 }

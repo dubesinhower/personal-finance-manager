@@ -27,7 +27,7 @@ export class AuthorizeComponent implements OnInit {
         }
         // console.log(queryString);
         let state = `?${this.getParameterByName('state', queryString)}`;
-        // console.log(`state: ${state}`);
+        // console.log(`state: ${state}`); 
         let storedSecurityToken = sessionStorage.getItem('googleOAuthSecurityToken');
         // console.log(`storedToken: ${storedSecurityToken}`);
         let urlSecurityToken = this.getParameterByName('security_token', state);
@@ -47,18 +47,12 @@ export class AuthorizeComponent implements OnInit {
             case('update'):
                 break;
             default:
-                this.authorizationMessages.push('Error!');
+                this.authorizationMessages.push('Error!'); 
                 return;
         }
-        this._gmailAccountService
-            .addAccount(code)
-            .subscribe(response => {
-                console.log(response);
-                this._router.navigate(['/emailAccounts']);
-            },
-            error => {
-                console.log(error);
-            });
+        if(this._gmailAccountService.addAccount(code)) {
+            this._router.navigate(['/emailAccounts']);
+        }            
     }
 
     getParameterByName(name: string, url: string) {

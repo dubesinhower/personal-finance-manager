@@ -1,0 +1,20 @@
+<table class='table table-hover'>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Management</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let emailAccount of emailAccounts'
+            (click)='selectAccount.emit(emailAccount.id)'
+            [class.table-active]='emailAccount.id == selectedAccount'>
+            <td scope='row'>{{emailAccount.id}}</td>
+            <td>{{emailAccount.name}}</td>
+            <td>{{emailAccount.emailType.description}}</td>
+            <td><button class="btn btn-primary btn-sm" (click)='deleteAccount.emit(emailAccount.id)'>Delete</button></td>
+        </tr>
+    </tbody>
+</table>

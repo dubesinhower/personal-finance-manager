@@ -4,16 +4,20 @@
             <th>#</th>
             <th>Name</th>
             <th>Type</th>
-            <th>Management</th>
+            <th>Created</th>
+            <th>Last Scanned</th>
+            <th> </th>
         </tr>
-    </thead>
+    </thead> 
     <tbody>
         <tr *ngFor='let emailAccount of emailAccounts'
-            (click)='selectAccount.emit(emailAccount.id)'
+            (click)='selectAccount.emit(emailAccount.id)' 
             [class.table-active]='emailAccount.id == selectedAccount'>
             <td scope='row'>{{emailAccount.id}}</td>
             <td>{{emailAccount.name}}</td>
             <td>{{emailAccount.emailType.description}}</td>
+            <td>{{emailAccount.created | date}}</td>
+            <td>{{emailAccount.lastScanned | date:'medium'}}</td> 
             <td><button class="btn btn-primary btn-sm" (click)='deleteAccount.emit(emailAccount.id)'>Delete</button></td>
         </tr>
     </tbody>

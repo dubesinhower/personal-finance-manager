@@ -25,18 +25,20 @@ namespace EcommerceTrackerAPI.Services
         private static GoogleClientSecrets _clientSecrets;
         private const string ApplicationName = "Personal Finance Manager";
 
-        private readonly ClientSecrets _cs;
-        private readonly string[] _scopes = { 
+        // private readonly ClientSecrets _cs;
+        /*private readonly string[] _scopes = { 
             "https://www.googleapis.com/auth/userinfo.email",
             "https://www.googleapis.com/auth/userinfo.profile",
             "https://www.googleapis.com/auth/gmail.readonly"
-        };
-        private static readonly string ClientSecretsPath = HttpContext.Current.Server.MapPath("~/client_secret.json");
+        };*/
+
+        private static string _clientSecretsPath;
         private const string RedirectUrl = "http://localhost:3000/authorize";
 
         public GmailOAuthService()
         {
-            _cs = ReadClientSecrets(ClientSecretsPath);
+            _clientSecretsPath = "C:/client_secret.json";
+            // _cs = ReadClientSecrets(_clientSecretsPath);
             _clientSecrets = GetClientSecrets();
         }
 
@@ -111,13 +113,13 @@ namespace EcommerceTrackerAPI.Services
         /// https://gusclass.com/blog/2014/04/16/how-to-oauth-2-0-flows-using-the-google-net-api-client-libraries-1-7-in-c/
         private static GoogleClientSecrets GetClientSecrets()
         {
-            using (var stream = new FileStream(ClientSecretsPath, FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(_clientSecretsPath, FileMode.Open, FileAccess.Read))
             {
                 return GoogleClientSecrets.Load(stream);
             }
         }
 
-        private string BuildAuthorizationUrl()
+        /*private string BuildAuthorizationUrl()
         {
             var parameters = new[]
             {
@@ -139,6 +141,6 @@ namespace EcommerceTrackerAPI.Services
                 var json = r.ReadToEnd();
                 return JsonConvert.DeserializeObject<ClientSecrets>(json);
             }
-        }
+        }*/
     }
 }

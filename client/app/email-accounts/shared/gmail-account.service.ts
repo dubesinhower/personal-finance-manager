@@ -3,6 +3,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Store } from '@ngrx/store';
 
 import { AppStore } from '../../shared';
+import { EmailAccount } from '../shared';
 
 // https://github.com/manfredsteyer/angular2-oauth2/blob/master/oauth-service.ts#L61
 @Injectable()
@@ -23,7 +24,7 @@ export class GmailAccountService {
 
     initServerFlow(state = '') {
         this.createLoginUrl(state)
-            .then(loginUrl => location.href = loginUrl)
+            .then(loginUrl => window.location.href = loginUrl)
             .catch(error => {
                 console.error('Error in initServerFlow');
                 console.error(error);
@@ -37,8 +38,17 @@ export class GmailAccountService {
             'Authorization': `Bearer ${token.access_token}`,
             'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this._http
-            .post(`${this._secureBaseUrl}/api/gmailAccounts`, body, options);
+        return this._http.post(`${this._secureBaseUrl}/api/gmailAccounts`, body, options)
+            .map(response => response.json() as EmailAccount)
+            .subscribe(
+                emailAccount => {
+                    this._store.dispatch({ type: 'ADD_EMAIL_ACCOUNT', payload: emailAccount });
+                    return true;
+                },
+                error => {
+                    console.log(error);
+                    return false;
+                });
     }
 
     private createLoginUrl(state: string): Promise<string> {
@@ -104,5 +114,12 @@ export class GmailAccountService {
         }
         console.error(errMsg);
         return Promise.reject(errMsg);
+    }
+
+    private openPopupWindow(url: string) {
+        let newwindow = window.open(url,'','height=600,width=800');
+        if (window.focus) {
+            newwindow.focus()
+        }
     }
 }

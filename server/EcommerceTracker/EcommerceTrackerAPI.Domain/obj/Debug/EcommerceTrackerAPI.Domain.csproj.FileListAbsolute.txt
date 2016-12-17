@@ -1,0 +1,5 @@
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI.Domain\bin\Debug\EcommerceTrackerAPI.Domain.dll
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI.Domain\bin\Debug\EcommerceTrackerAPI.Domain.pdb
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI.Domain\obj\Debug\EcommerceTrackerAPI.Domain.csprojResolveAssemblyReference.cache
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI.Domain\obj\Debug\EcommerceTrackerAPI.Domain.dll
+D:\Github\personal-finance-manager\server\EcommerceTracker\EcommerceTrackerAPI.Domain\obj\Debug\EcommerceTrackerAPI.Domain.pdb

@@ -32,6 +32,7 @@ namespace EcommerceTrackerAPI.Models
 
         public DbSet<EmailAccount> EmailAccounts { get; set; }
         public DbSet<EmailType> EmailTypes { get; set; }
+        public DbSet<Email> Emails { get; set; }
         public DbSet<GmailAccessTokens> GmailAccessTokens { get; set; }
         public DbSet<ImapSettings> ImapSettings { get; set; }
         public DbSet<ImapConnection> ImapConnections { get; set; }
